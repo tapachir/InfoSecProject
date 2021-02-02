@@ -1,7 +1,8 @@
 # InfoSecProject
 
-pip install -r requirements.txt
-Run api.py and open index.html in a browser.
+pip3 install -r requirements.txt
+Run api.py (or apiOld.py for old version without security measures implemented) and open index.html in a browser.
+
 
 We build a webapp that can be used as a secret-safe for users.
 Users can use a name and a password for a secret.
@@ -23,3 +24,6 @@ With this the a potential sql injection can be prevented since the sqllite funct
 To prevent this we switched our approach of saving the passwords on the Database and started encrypting the secrets using the passwords. With this only ecrypted secrets were in the database which would then need the initial password to be decyrpted and therefore revealed. 
 
 To compare the before and after version we included both in this repo: new--> api.py  and old --> old_api.py
+
+
+Data in the DB can be checked with a Application which is able to open .db file --> data.db in our repo
