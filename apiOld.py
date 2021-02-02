@@ -40,8 +40,6 @@ def register():
 
 @app.route("/search")
 def search():
-    re = request.get_json()
-    return f"json<br>{re}"
     name = request.args.get('name')
     password = request.args.get('password')
     conn = sqlite3.connect("data.db")
@@ -49,27 +47,18 @@ def search():
     try:
         statement = "select secret from user1 where name='{}' AND password='{}'".format(name,password)
 
-        ##statement = "PRAGMA table_info('user1')"
-        ##c.execute("select secret from user1 where name=? AND password=?", (name,password))
+
         c.execute(statement)
 
         found = c.fetchall()
         if found == []:
             return f"No Access<br>{statement}"
         else:
-            return f"Access granted<br> YOUR SECRET IS{found[0]}"
+            return f"Access granted<br> YOUR SECRET IS {found[0][0]}"
     except sqlite3.Error as e:
         return str(e) + f"<br>{statement}"
 
 
-@app.route("/login")
-def login():
-    return open("login.html").read()
-
-
-@app.route("/")
-def main():
-    return open("403.html").read()
 
 
 if __name__ == "__main__":
