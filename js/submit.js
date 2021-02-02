@@ -16,8 +16,10 @@ function makeHttpObject() {
 }
 const button = document.getElementById("get");
 button.addEventListener("click", e => {
-    const code = document.getElementById("getRequest").value;
-    const url = "http://0.0.0.0:5000/search?code=" + code;
+    const password = document.getElementById("getRequestPassword").value;
+    const name = document.getElementById("getRequestName").value;
+
+    const url = "http://0.0.0.0:5000/search?name=" + name+"&password="+password;
     let request = makeHttpObject();
     console.log(url);
     request.open("GET", url, true);
@@ -31,12 +33,24 @@ button.addEventListener("click", e => {
 
 const button2 = document.getElementById("submit");
 button2.addEventListener("click", e => {
-    const code = document.getElementById("submitRequest").value;
-    const url = "http://0.0.0.0:5000/register?code=" + code;
+    var name = document.getElementById("submitRequestName").value;
+    var password = document.getElementById("submitRequestPassword").value;
+    var secret = document.getElementById("submitRequestSecret").value;
+    // name = "test";
+    // password = "test";
+    // secret = "test";
+
+    const url = "http://0.0.0.0:5000/register?name=" + name +"&password="+ password +"&secret="+ secret;
+
     let request = makeHttpObject();
     console.log(url);
     request.open("GET", url, true);
+
+    console.log(2);
+
     request.send(null);
+    console.log(3);
+
     request.onreadystatechange = function () {
         if (request.readyState == 4)
             var text = request.responseText;
