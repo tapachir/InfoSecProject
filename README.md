@@ -1,5 +1,5 @@
 # InfoSecProject
-Screencast Demo Video --> https://we.tl/t-d5flEOpZBl
+Screencast Demo Video --> https://we.tl/t-d5flEOpZBl or https://drive.google.com/file/d/1S8OcHd59L7Sjm3zBV3zBgRv2QXhFljhf/view?usp=sharing
 
 pip3 install -r requirements.txt <br />
 Run api.py (or apiOld.py for old version without security measures implemented) and open index.html in a browser.
