@@ -34,14 +34,11 @@ def register():
     obj = AES.new(passwordBytes, AES.MODE_CFB, 'This is an IV456'.encode("utf8"))
     message = secret.encode("utf8")
     secretEncrypted = obj.encrypt(message)
-    ##return f"Successfully added {secretEncrypted}'s secret"
     conn = sqlite3.connect("data.db")
     c = conn.cursor()
     try:
-        ##statement = "INSERT INTO user2 (id,name,secret) VALUES (1,'{}','{}')".format(name,secretEncrypted)
 
-        c.execute("INSERT INTO user2 (id,name,secret) VALUES (1,?,?)",(name,secretEncrypted))
-        ##c.execute(statement)
+        c.execute("INSERT INTO usersecret (name,secret) VALUES (?,?)",(name,secretEncrypted))
         conn.commit()
 
         return f"Successfully added {name}'s secret"
@@ -63,11 +60,8 @@ def search():
     obj2 = AES.new(passwordBytes, AES.MODE_CFB, 'This is an IV456'.encode("utf8"))
 
     try:
-        ##statement = "select secret from user2 where name='{}'".format(name,password)
 
-        ##statement = "PRAGMA table_info('user1')"
-        c.execute("select secret from user2 where name=?", (name,))
-        #c.execute(statement)
+        c.execute("select secret from usersecret where name=?", (name,))
 
         found = c.fetchall()
         if found == []:
@@ -84,14 +78,6 @@ def search():
         return str(e) + f"<br>{password}"
 
 
-@app.route("/login")
-def login():
-    return open("login.html").read()
-
-
-@app.route("/")
-def main():
-    return open("403.html").read()
 
 
 if __name__ == "__main__":
