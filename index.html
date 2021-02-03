@@ -2,20 +2,30 @@
 <html lang="en">
 <head>
     <title>
-        Access Wifi
+      Secret Store
     </title>
 </head>
 <body>
-<br>
-<label for="code">Code:</label>
-<input type="text" id="getRequest"><br><br>
-<button id="get">get</button>
-<h5 id="text"></h5>
+  <h1>SECRET STORE</h1>
+  <br><br><br><br>
 
-<label for="request">SUBMIT:</label>
-<input type="text" id="submitRequest"><br><br>
-<button id="submit">submit</button>
+<label for="request">SAVE SECRET:</label><br><br>
+<input type="text" id="submitRequestName">Name</input><br><br>
+<input type="text" id="submitRequestPassword">password</input><br><br>
+<input type="text" id="submitRequestSecret">secret</input><br><br>
+
+<button id="submit">SAVE</button>
 <h5 id="textSubmit"></h5>
+<br><br><br><br>
+
+<label for="code">LOAD SECRET:</label><br><br>
+<input type="text" id="getRequestName">Name</input><br><br>
+<input type="text" id="getRequestPassword">password</input><br><br>
+
+<button id="get">LOAD</button>
+<h5 id="text"></h5>
+<br>
+
 </body>
 <script src="js/submit.js"></script>
 </html>
